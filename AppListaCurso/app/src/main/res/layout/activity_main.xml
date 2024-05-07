@@ -22,7 +22,7 @@
     <EditText
         android:id="@+id/editTextText9"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="48dp"
         android:layout_margin="16dp"
         android:layout_marginTop="112dp"
         android:ems="10"
@@ -35,7 +35,7 @@
     <EditText
         android:id="@+id/editTextText10"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="48dp"
         android:layout_margin="16dp"
         android:ems="10"
         android:hint="@string/text_hint_edit_secondname"
@@ -48,7 +48,7 @@
     <EditText
         android:id="@+id/editTextText11"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="48dp"
         android:layout_margin="16dp"
         android:ems="10"
         android:hint="@string/text_hint_edit_appname"
@@ -61,7 +61,7 @@
     <EditText
         android:id="@+id/editTextText12"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="48dp"
         android:layout_margin="16dp"
         android:ems="10"
         android:inputType="text"
