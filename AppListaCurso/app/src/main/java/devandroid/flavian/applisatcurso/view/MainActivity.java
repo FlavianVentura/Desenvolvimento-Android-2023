@@ -14,6 +14,10 @@ import devandroid.flavian.applisatcurso.model.Pessoa;
 public class MainActivity extends AppCompatActivity {
 
     Pessoa pessoa;
+    Pessoa outraPessoa;
+
+    String dadosPessoa;
+    String dadosOutraPessoa;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -33,5 +37,31 @@ public class MainActivity extends AppCompatActivity {
         pessoa.setDesiredCourse("Android");
         pessoa.setPhoneNumber("81988434830");
 
+        outraPessoa = new Pessoa();
+
+        outraPessoa.setFirstName("Papai Noel");
+        outraPessoa.setSurName("Silva Sauro");
+        outraPessoa.setDesiredCourse("UWP WINUI");
+        outraPessoa.setPhoneNumber("81 9 86587478");
+
+        dadosPessoa = "Primeiro Nome: ";
+        dadosPessoa += pessoa.getFirstName();
+        dadosPessoa += " Sobrenome: ";
+        dadosPessoa += pessoa.getSurName();
+        dadosPessoa += " Curso Desejado: ";
+        dadosPessoa += pessoa.getDesiredCourse();
+        dadosPessoa += " Telefone Contato: ";
+        dadosPessoa += pessoa.getPhoneNumber();
+
+        dadosOutraPessoa = "Primeiro Nome: ";
+        dadosOutraPessoa += outraPessoa.getFirstName();
+        dadosOutraPessoa += " Sobrenome: ";
+        dadosOutraPessoa += outraPessoa.getSurName();
+        dadosOutraPessoa += " Curso Desejado: ";
+        dadosOutraPessoa += outraPessoa.getDesiredCourse();
+        dadosOutraPessoa += " Telefone Contato: ";
+        dadosOutraPessoa += outraPessoa.getPhoneNumber();
+
+        int parada = 0;
     }
 }
