@@ -1,6 +1,8 @@
 package devandroid.flavian.applisatcurso.view;
 
+import android.nfc.Tag;
 import android.os.Bundle;
+import android.util.Log;
 
 import androidx.activity.EdgeToEdge;
 import androidx.appcompat.app.AppCompatActivity;
@@ -44,7 +46,7 @@ public class MainActivity extends AppCompatActivity {
         outraPessoa.setDesiredCourse("UWP WINUI");
         outraPessoa.setPhoneNumber("81 9 86587478");
 
-        dadosPessoa = "Primeiro Nome: ";
+/*        dadosPessoa = "Primeiro Nome: ";
         dadosPessoa += pessoa.getFirstName();
         dadosPessoa += " Sobrenome: ";
         dadosPessoa += pessoa.getSurName();
@@ -61,7 +63,8 @@ public class MainActivity extends AppCompatActivity {
         dadosOutraPessoa += outraPessoa.getDesiredCourse();
         dadosOutraPessoa += " Telefone Contato: ";
         dadosOutraPessoa += outraPessoa.getPhoneNumber();
+*/
 
-        int parada = 0;
+        Log.i("POOHerança", "Objeto Pessoa " + pessoa.toString());
     }
 }
