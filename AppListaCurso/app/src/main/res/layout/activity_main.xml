@@ -54,7 +54,7 @@
         android:layout_margin="16dp"
         android:autofillHints=""
         android:ems="10"
-        android:hint="@string/text_hint_edit_appname"
+        android:hint="@string/text_hint_edit_desiredCourse"
         android:inputType="text"
         android:textColorHint="#8D6E63"
         app:layout_constraintEnd_toEndOf="parent"
@@ -68,23 +68,25 @@
         android:layout_margin="16dp"
         android:autofillHints=""
         android:ems="10"
+        android:hint="@string/text_hint_edit_phonecontact"
         android:inputType="text"
-        android:text="@string/text_hint_edit_phonecontact"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/editDesiredCourse"
         tools:ignore="VisualLintTextFieldSize" />
 
-    <Button android:id="@+id/clearButton"
+    <Button
+        android:id="@+id/clearButton"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="@string/btn_clear"
         app:layout_constraintBottom_toTopOf="@+id/finallyButton"
         app:layout_constraintTop_toBottomOf="@+id/editPhoneNumber"
-        tools:layout_editor_absoluteX="16dp"
-        tools:ignore="MissingConstraints" />
+        tools:ignore="MissingConstraints"
+        tools:layout_editor_absoluteX="20dp" />
 
-    <Button android:id="@+id/saveButton"
+    <Button
+        android:id="@+id/saveButton"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="248dp"
@@ -92,7 +94,7 @@
         android:text="@string/btn_save"
         app:layout_constraintBottom_toTopOf="@+id/finallyButton"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintHorizontal_bias="0.39"
         app:layout_constraintStart_toEndOf="@+id/clearButton"
         app:layout_constraintStart_toStartOf="@+id/clearButton"
         app:layout_constraintTop_toBottomOf="@+id/editPhoneNumber" />

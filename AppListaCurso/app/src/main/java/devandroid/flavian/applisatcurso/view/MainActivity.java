@@ -3,6 +3,10 @@ package devandroid.flavian.applisatcurso.view;
 import android.nfc.Tag;
 import android.os.Bundle;
 import android.util.Log;
+import android.view.View;
+import android.widget.Button;
+import android.widget.EditText;
+import android.widget.Toast;
 
 import androidx.activity.EdgeToEdge;
 import androidx.appcompat.app.AppCompatActivity;
@@ -21,6 +25,15 @@ public class MainActivity extends AppCompatActivity {
     String dadosPessoa;
     String dadosOutraPessoa;
 
+    EditText editFirstName;
+    EditText editSurName;
+    EditText editDesiredCourse;
+    EditText editPhoneNumber;
+
+    Button clearButton;
+    Button saveButton;
+    Button finallyButton;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -34,10 +47,10 @@ public class MainActivity extends AppCompatActivity {
 
         pessoa = new Pessoa();
 
-        pessoa.setFirstName("Flavian");
+/*        pessoa.setFirstName("Flavian");
         pessoa.setSurName("Ventura");
         pessoa.setDesiredCourse("Android");
-        pessoa.setPhoneNumber("81988434830");
+        pessoa.setPhoneNumber("81988434830");*/
 
         outraPessoa = new Pessoa();
 
@@ -45,6 +58,54 @@ public class MainActivity extends AppCompatActivity {
         outraPessoa.setSurName("Silva Sauro");
         outraPessoa.setDesiredCourse("UWP WINUI");
         outraPessoa.setPhoneNumber("81 9 86587478");
+
+        editFirstName = findViewById(R.id.editFirstName);
+        editSurName = findViewById(R.id.editSurName);
+        editDesiredCourse = findViewById(R.id.editDesiredCourse);
+        editPhoneNumber = findViewById(R.id.editPhoneNumber);
+
+        clearButton = findViewById(R.id.clearButton);
+        saveButton = findViewById(R.id.saveButton);
+        finallyButton = findViewById(R.id.finallyButton);
+
+        editFirstName.setText(pessoa.getFirstName());
+        editSurName.setText(pessoa.getSurName());
+        editDesiredCourse.setText(pessoa.getDesiredCourse());
+        editPhoneNumber.setText(pessoa.getPhoneNumber());
+
+        clearButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                editFirstName.setText("");
+                editSurName.setText("");
+                editDesiredCourse.setText("");
+                editPhoneNumber.setText("");
+            }
+        });
+
+        saveButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+
+                pessoa.setFirstName(editFirstName.getText().toString());
+                pessoa.setSurName(editSurName.getText().toString());
+                pessoa.setDesiredCourse(editDesiredCourse.getText().toString());
+                pessoa.setPhoneNumber(editPhoneNumber.getText().toString());
+
+                Toast.makeText(MainActivity.this,
+                        "Dados Salvos Com Sucesso!" + pessoa.toString(),
+                        Toast.LENGTH_LONG).show();
+            }
+        });
+
+        finallyButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Toast.makeText(MainActivity.this,
+                        "App Finalizado!", Toast.LENGTH_LONG).show();
+                finish();
+            }
+        });
 
 /*        dadosPessoa = "Primeiro Nome: ";
         dadosPessoa += pessoa.getFirstName();
