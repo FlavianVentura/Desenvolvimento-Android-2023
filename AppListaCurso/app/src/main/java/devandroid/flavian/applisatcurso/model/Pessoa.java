@@ -43,11 +43,10 @@ public class Pessoa {
 
     @Override
     public String toString() {
-        return "Pessoa{" +
-                "firstName='" + firstName + '\'' +
-                ", surName='" + surName + '\'' +
-                ", desiredCourse='" + desiredCourse + '\'' +
-                ", phoneNumber='" + phoneNumber + '\'' +
-                '}';
+        return
+                " Primeiro Nome = '" + firstName + '\'' +
+                ", Sobrenome = '" + surName + '\'' +
+                ", Curso Desejado = '" + desiredCourse + '\'' +
+                ", Telefone Contato = '" + phoneNumber + '\'';
     }
 }
