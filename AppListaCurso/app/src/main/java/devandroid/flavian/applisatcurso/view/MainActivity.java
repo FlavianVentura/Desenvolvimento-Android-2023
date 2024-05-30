@@ -3,6 +3,8 @@ package devandroid.flavian.applisatcurso.view;
 import android.nfc.Tag;
 import android.os.Bundle;
 import android.util.Log;
+import android.widget.Button;
+import android.widget.EditText;
 
 import androidx.activity.EdgeToEdge;
 import androidx.appcompat.app.AppCompatActivity;
@@ -20,6 +22,15 @@ public class MainActivity extends AppCompatActivity {
 
     String dadosPessoa;
     String dadosOutraPessoa;
+
+    EditText editFirstName;
+    EditText editSurName;
+    EditText editDesiredCourse;
+    EditText editPhoneNumber;
+
+    Button clearButton;
+    Button saveButton;
+    Button finallyButton;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -45,6 +56,21 @@ public class MainActivity extends AppCompatActivity {
         outraPessoa.setSurName("Silva Sauro");
         outraPessoa.setDesiredCourse("UWP WINUI");
         outraPessoa.setPhoneNumber("81 9 86587478");
+
+        editFirstName = findViewById(R.id.editFirstName);
+        editSurName = findViewById(R.id.editSurName);
+        editDesiredCourse = findViewById(R.id.editDesiredCourse);
+        editPhoneNumber = findViewById(R.id.editPhoneNumber);
+
+        clearButton = findViewById(R.id.clearButton);
+        saveButton = findViewById(R.id.saveButton);
+        finallyButton = findViewById(R.id.finallyButton);
+
+        editFirstName.setText(pessoa.getFirstName());
+        editSurName.setText(pessoa.getSurName());
+        editDesiredCourse.setText(pessoa.getDesiredCourse());
+        editPhoneNumber.setText(pessoa.getPhoneNumber());
+
 
 /*        dadosPessoa = "Primeiro Nome: ";
         dadosPessoa += pessoa.getFirstName();
