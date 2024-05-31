@@ -2,7 +2,6 @@ package devandroid.flavian.applisatcurso.view;
 
 import android.content.SharedPreferences;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -27,10 +26,10 @@ public class MainActivity extends AppCompatActivity {
     Pessoa pessoa;
     Pessoa outraPessoa;
 
-    EditText editFirstName;
-    EditText editSurName;
-    EditText editDesiredCourse;
-    EditText editPhoneNumber;
+    EditText editTextFirstName;
+    EditText editTextSurName;
+    EditText editTextDesiredCourse;
+    EditText editTextPhoneNumber;
 
     Button clearButton;
     Button saveButton;
@@ -54,28 +53,34 @@ public class MainActivity extends AppCompatActivity {
 
         pessoa = new Pessoa();
 
-        editFirstName = findViewById(R.id.editFirstName);
-        editSurName = findViewById(R.id.editSurName);
-        editDesiredCourse = findViewById(R.id.editDesiredCourse);
-        editPhoneNumber = findViewById(R.id.editPhoneNumber);
+        // Mapping the text fields on the main screen
+        editTextFirstName = findViewById(R.id.editFirstName);
+        editTextSurName = findViewById(R.id.editSurName);
+        editTextDesiredCourse = findViewById(R.id.editDesiredCourse);
+        editTextPhoneNumber = findViewById(R.id.editPhoneNumber);
 
+        //Mapping the button on the main screen
         clearButton = findViewById(R.id.clearButton);
         saveButton = findViewById(R.id.saveButton);
         finalizeButton = findViewById(R.id.finalizeButton);
 
-/*      editFirstName.setText(pessoa.getFirstName());
-        editSurName.setText(pessoa.getSurName());
-        editDesiredCourse.setText(pessoa.getDesiredCourse());
-        editPhoneNumber.setText(pessoa.getPhoneNumber());
-*/
+        pessoa.setFirstName(preferences.getString("PrimeiroNome", ""));
+        pessoa.setSurName(preferences.getString("Sobrenome", ""));
+        pessoa.setDesiredCourse(preferences.getString("CursoDesejado", ""));
+        pessoa.setPhoneNumber(preferences.getString("TelefoneContato", ""));
+
+        editTextFirstName.setText(pessoa.getFirstName());
+        editTextSurName.setText(pessoa.getSurName());
+        editTextDesiredCourse.setText(pessoa.getDesiredCourse());
+        editTextPhoneNumber.setText(pessoa.getPhoneNumber());
 
         clearButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                editFirstName.setText("");
-                editSurName.setText("");
-                editDesiredCourse.setText("");
-                editPhoneNumber.setText("");
+                editTextFirstName.setText("");
+                editTextSurName.setText("");
+                editTextDesiredCourse.setText("");
+                editTextPhoneNumber.setText("");
             }
         });
 
@@ -83,10 +88,10 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
 
-                pessoa.setFirstName(editFirstName.getText().toString());
-                pessoa.setSurName(editSurName.getText().toString());
-                pessoa.setDesiredCourse(editDesiredCourse.getText().toString());
-                pessoa.setPhoneNumber(editPhoneNumber.getText().toString());
+                pessoa.setFirstName(editTextFirstName.getText().toString());
+                pessoa.setSurName(editTextSurName.getText().toString());
+                pessoa.setDesiredCourse(editTextDesiredCourse.getText().toString());
+                pessoa.setPhoneNumber(editTextPhoneNumber.getText().toString());
 
                 Toast.makeText(MainActivity.this,
                         "Dados Salvos Com Sucesso!" + pessoa.toString(),
@@ -95,7 +100,7 @@ public class MainActivity extends AppCompatActivity {
                 listaVip.putString("PrimeiroNome", pessoa.getFirstName());
                 listaVip.putString("Sobrenome", pessoa.getSurName());
                 listaVip.putString("CursoDesejado", pessoa.getDesiredCourse());
-                listaVip.putString("TelefoneCOntato", pessoa.getPhoneNumber());
+                listaVip.putString("TelefoneContato", pessoa.getPhoneNumber());
                 listaVip.apply();
 
                 controller.savePessoa(pessoa);
