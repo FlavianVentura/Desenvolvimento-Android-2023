@@ -1,5 +1,6 @@
 package devandroid.flavian.applisatcurso.view;
 
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
@@ -18,6 +19,9 @@ import devandroid.flavian.applisatcurso.controller.PessoaController;
 import devandroid.flavian.applisatcurso.model.Pessoa;
 
 public class MainActivity extends AppCompatActivity {
+
+    SharedPreferences preferences;
+    public static final String NAME_PREFERENCES = "preference_listavip";
 
     PessoaController controller;
     Pessoa pessoa;
@@ -42,6 +46,9 @@ public class MainActivity extends AppCompatActivity {
             v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom);
             return insets;
         });
+
+        preferences = getSharedPreferences(NAME_PREFERENCES, 0);
+        SharedPreferences.Editor listaVip = preferences.edit();
 
         controller = new PessoaController();
 
@@ -84,6 +91,12 @@ public class MainActivity extends AppCompatActivity {
                 Toast.makeText(MainActivity.this,
                         "Dados Salvos Com Sucesso!" + pessoa.toString(),
                         Toast.LENGTH_LONG).show();
+
+                listaVip.putString("PrimeiroNome", pessoa.getFirstName());
+                listaVip.putString("Sobrenome", pessoa.getSurName());
+                listaVip.putString("CursoDesejado", pessoa.getDesiredCourse());
+                listaVip.putString("TelefoneCOntato", pessoa.getPhoneNumber());
+                listaVip.apply();
 
                 controller.savePessoa(pessoa);
             }
