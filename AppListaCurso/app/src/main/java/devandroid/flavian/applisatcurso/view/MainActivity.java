@@ -1,6 +1,5 @@
 package devandroid.flavian.applisatcurso.view;
 
-import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
@@ -19,17 +18,13 @@ import devandroid.flavian.applisatcurso.model.Pessoa;
 
 public class MainActivity extends AppCompatActivity {
 
-    SharedPreferences preferences;
-    public static final String NAME_PREFERENCES = "preference_listavip";
-
     PessoaController controller;
-    Pessoa pessoa;
-    Pessoa outraPessoa;
+    Pessoa pessoa = new Pessoa();
 
-    EditText editTextFirstName;
-    EditText editTextSurName;
-    EditText editTextDesiredCourse;
-    EditText editTextPhoneNumber;
+    public EditText editTextFirstName;
+    public EditText editTextSurName;
+    public EditText editTextDesiredCourse;
+    public EditText editTextPhoneNumber;
 
     Button clearButton;
     Button saveButton;
@@ -46,12 +41,9 @@ public class MainActivity extends AppCompatActivity {
             return insets;
         });
 
-        preferences = getSharedPreferences(NAME_PREFERENCES, 0);
-        SharedPreferences.Editor listaVip = preferences.edit();
-
-        controller = new PessoaController();
-
-        pessoa = new Pessoa();
+        controller = new PessoaController(MainActivity.this);
+        controller.GetPerson(pessoa);
+        // controller.toString();
 
         // Mapping the text fields on the main screen
         editTextFirstName = findViewById(R.id.editFirstName);
@@ -64,11 +56,6 @@ public class MainActivity extends AppCompatActivity {
         saveButton = findViewById(R.id.saveButton);
         finalizeButton = findViewById(R.id.finalizeButton);
 
-        pessoa.setFirstName(preferences.getString("PrimeiroNome", ""));
-        pessoa.setSurName(preferences.getString("Sobrenome", ""));
-        pessoa.setDesiredCourse(preferences.getString("CursoDesejado", ""));
-        pessoa.setPhoneNumber(preferences.getString("TelefoneContato", ""));
-
         editTextFirstName.setText(pessoa.getFirstName());
         editTextSurName.setText(pessoa.getSurName());
         editTextDesiredCourse.setText(pessoa.getDesiredCourse());
@@ -77,10 +64,13 @@ public class MainActivity extends AppCompatActivity {
         clearButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+
                 editTextFirstName.setText("");
                 editTextSurName.setText("");
                 editTextDesiredCourse.setText("");
                 editTextPhoneNumber.setText("");
+
+                controller.clearPerson();
             }
         });
 
@@ -97,13 +87,8 @@ public class MainActivity extends AppCompatActivity {
                         "Dados Salvos Com Sucesso!" + pessoa.toString(),
                         Toast.LENGTH_LONG).show();
 
-                listaVip.putString("PrimeiroNome", pessoa.getFirstName());
-                listaVip.putString("Sobrenome", pessoa.getSurName());
-                listaVip.putString("CursoDesejado", pessoa.getDesiredCourse());
-                listaVip.putString("TelefoneContato", pessoa.getPhoneNumber());
-                listaVip.apply();
-
-                controller.savePessoa(pessoa);
+                //controller.SavePerson(pessoa);
+                controller.CreateSharedPreferencesFile(pessoa);
             }
         });
 
