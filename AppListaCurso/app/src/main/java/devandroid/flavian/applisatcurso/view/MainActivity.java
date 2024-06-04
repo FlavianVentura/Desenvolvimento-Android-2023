@@ -12,14 +12,21 @@ import androidx.core.graphics.Insets;
 import androidx.core.view.ViewCompat;
 import androidx.core.view.WindowInsetsCompat;
 
+import java.util.List;
+
 import devandroid.flavian.applisatcurso.R;
+import devandroid.flavian.applisatcurso.controller.CursoController;
 import devandroid.flavian.applisatcurso.controller.PessoaController;
+import devandroid.flavian.applisatcurso.model.Curso;
 import devandroid.flavian.applisatcurso.model.Pessoa;
 
 public class MainActivity extends AppCompatActivity {
 
+    Pessoa pessoa;
     PessoaController controller;
-    Pessoa pessoa = new Pessoa();
+    CursoController cursoController;
+
+    List<Curso> listaCurso;
 
     public EditText editTextFirstName;
     public EditText editTextSurName;
@@ -29,6 +36,7 @@ public class MainActivity extends AppCompatActivity {
     Button clearButton;
     Button saveButton;
     Button finalizeButton;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -41,9 +49,12 @@ public class MainActivity extends AppCompatActivity {
             return insets;
         });
 
+        pessoa = new Pessoa();
+        cursoController = new CursoController();
+        listaCurso = cursoController.GetListCourse();
+
         controller = new PessoaController(MainActivity.this);
         controller.GetPerson(pessoa);
-        // controller.toString();
 
         // Mapping the text fields on the main screen
         editTextFirstName = findViewById(R.id.editFirstName);
