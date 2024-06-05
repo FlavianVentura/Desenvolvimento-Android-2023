@@ -21,6 +21,19 @@ public class CursoController {
         courseList.add(new Curso("CSS")); // CSS
 
         return courseList;
+    }
 
+    public ArrayList<String> SpinnerDatas(){
+
+        ArrayList<String> datas = new ArrayList<>();
+
+        for (int i = 0; i < GetListCourse().size(); i++) {
+
+            Curso course = (Curso) GetListCourse().get(i);
+
+            datas.add(course.getDesiredCourse());
+        }
+
+        return datas;
     }
 }

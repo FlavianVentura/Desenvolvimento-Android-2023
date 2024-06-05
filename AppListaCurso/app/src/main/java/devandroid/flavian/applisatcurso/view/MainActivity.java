@@ -2,8 +2,10 @@ package devandroid.flavian.applisatcurso.view;
 
 import android.os.Bundle;
 import android.view.View;
+import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.Spinner;
 import android.widget.Toast;
 
 import androidx.activity.EdgeToEdge;
@@ -17,7 +19,6 @@ import java.util.List;
 import devandroid.flavian.applisatcurso.R;
 import devandroid.flavian.applisatcurso.controller.CursoController;
 import devandroid.flavian.applisatcurso.controller.PessoaController;
-import devandroid.flavian.applisatcurso.model.Curso;
 import devandroid.flavian.applisatcurso.model.Pessoa;
 
 public class MainActivity extends AppCompatActivity {
@@ -26,7 +27,7 @@ public class MainActivity extends AppCompatActivity {
     PessoaController controller;
     CursoController cursoController;
 
-    List<Curso> listaCurso;
+    List<String> NameOfCourse;
 
     public EditText editTextFirstName;
     public EditText editTextSurName;
@@ -36,6 +37,8 @@ public class MainActivity extends AppCompatActivity {
     Button clearButton;
     Button saveButton;
     Button finalizeButton;
+
+    Spinner spinner;
 
 
     @Override
@@ -49,9 +52,9 @@ public class MainActivity extends AppCompatActivity {
             return insets;
         });
 
-        pessoa = new Pessoa();
         cursoController = new CursoController();
-        listaCurso = cursoController.GetListCourse();
+        NameOfCourse = cursoController.SpinnerDatas();
+        pessoa = new Pessoa();
 
         controller = new PessoaController(MainActivity.this);
         controller.GetPerson(pessoa);
@@ -61,6 +64,14 @@ public class MainActivity extends AppCompatActivity {
         editTextSurName = findViewById(R.id.editSurName);
         editTextDesiredCourse = findViewById(R.id.editDesiredCourse);
         editTextPhoneNumber = findViewById(R.id.editPhoneNumber);
+        spinner = findViewById(R.id.spinner);
+
+        ArrayAdapter<String> adapter = new ArrayAdapter<>(this,
+                android.R.layout.simple_list_item_1, cursoController.SpinnerDatas());
+
+        adapter.setDropDownViewResource(android.R.layout.simple_list_item_1);
+
+        spinner.setAdapter(adapter);
 
         //Mapping the button on the main screen
         clearButton = findViewById(R.id.clearButton);
