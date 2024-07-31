@@ -6,6 +6,7 @@ public class Pessoa {
     private String surName;
     private String desiredCourse;
     private String phoneNumber;
+    private String eCode;
 
     public Pessoa(){}
 
